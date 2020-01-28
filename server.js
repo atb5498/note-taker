@@ -18,6 +18,11 @@ app.get("/api/notes", function (req, res) {
     res.json(db);
 })
 
+app.post("/api/notes", (req, res) => {
+    db.push(req.body);
+    res.sendStatus(200);
+})
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(function (req, res) {
