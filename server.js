@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const bodyParser = require('body-parser');
 const db = require("./db/db.json");
 
 const app = express();
@@ -19,16 +18,17 @@ app.get("/api/notes", (req, res) => {
 })
 
 app.post("/api/notes", (req, res) => {
-    db.push(req.body);
+    const note = {
+        id: db.length + 1,
+        title: req.body.title,
+        text: req.body.text
+    }
+    db.push(note);
     res.sendStatus(200);
 })
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(function (req, res) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('you posted:\n');
-    res.end(JSON.stringify(req.body, null, 2));
+app.delete("/api/notes:id", (req, res) => {
+    res.sendStatus(200);
 })
 
 app.listen(PORT, () => {
