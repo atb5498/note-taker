@@ -1,5 +1,5 @@
 # Note Taker
-This application is intended to allow users to to create, save, and delete previously made notes.
+This application is intended to allow users to create, save, and delete previously made notes.
 
 # User story
 AS A user
